@@ -3,15 +3,18 @@
 ## Introduction
 In this project we would automate the setup and maintenance of a load balancer by writing a shell script that when we run, all the task would be done for us automatically.
 
+In this project, 3 EC2 instances would be provisioned. One would act as a load balancer and would have the Nginx software. and the other two would have the apache software installed in them using the automation shellscript. 
+
+
 Automation helps speed up the deployment of services and reduces the chance of making errors in our day to day activity.
 
-## Deploying and configuring the Webservers
+## Deploying and configuring the Webservers (Apache Webserver)
 
 ## STEPS
 
 -  STEP 1: Provision an EC2 instance running ubuntu 20.04.
 
-- STEP 2: Open port 8000 to allow traffic from anywhere using the security group. A
+- STEP 2: Open port 8000 to allow traffic from anywhere using the security group. 
 
 - STEP 3: Connect to the webserver via the terminal using SSH client
 
@@ -68,12 +71,14 @@ sudo systemctl restart apache2
 
 - STEP 5: Change the permissions on the file to make it an executable file using syntax *sudo chmod +x install.sh*
 
--Step 6:Run the shell script using the command below. using the syntax:  *./install.sh PUBLIC_IP*. Where PUBLIC_IP is the PUBLIC address of the webservers
+-Step 6:Run the shell script using the command below. using the syntax:  *./install.sh PUBLIC_IP*.  
+
+Where PUBLIC_IP is the PUBLIC address of the webservers
 
 
 ![ChangeToXfileandRunfile](./img/3.install.png)
 
-![ChangeToXfileandRunfile](./img/2.install.png)
+![ChangeToXfileandRunfile](./img/2.runscript.png)
 
 
 - After runing the script as shown in the images above  the apache software is installed on each of the webservers. The image below shows the output of the script
@@ -158,15 +163,23 @@ To run the script below we would follow the steps below
 
 *./nginx.sh PUBLIC_IP Webserver-1 Webserver-2*
 
-![ChangeToXfileandRunfile](./img/4.nginx.png)
+- Usage:*./nginx.sh 16.170.225.53 16.171.12.78 13.60.1850*
+
+- Where the PUBLIC_IP is public address of where the EC2 instance where Nginx is installed and Webserver-1 Webserver-2 are the public IP address of of the  EC2 instance where apache is installed as described in the section above
 
 ![ChangeToXfileandRunfile](./img/server1.png)
 
-![ChangeToXfileandRunfile](./img/server1port8000.png)
 
 ![ChangeToXfileandRunfile](./img/server2.png)
 
+**The images above shows the screenshot of loadbalancer**
+
+
+![ChangeToXfileandRunfile](./img/server1port8000.png)
+
 ![ChangeToXfileandRunfile](./img/server2port8000.png)
+
+**The image above shows the screenshot of webserver1 and webserver 2**
 
 
 
